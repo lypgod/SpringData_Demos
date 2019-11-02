@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.10:3306/SPRINGDATA_PROJECT?useUnicode=true&characterEncoding=utf8
+    platform: mysql
+    username: lypgod
+    password: 123456
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  redis:
+    host: 192.168.2.10
+    port: 6379
+    password: 123456
+    timeout: 0
+    jedis:
+      pool:
+        max-wait: -1ms
+        max-idle: 8
+        max-active: 8
+
+  elasticsearch:
+    rest:
+      uris: 192.168.2.10:9200
+
+  data:
+    mongodb:
+      host: 192.168.2.10
+      database: lypgod
+      port: 27017
+
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    com.lypgod.demo: WARN
+    org.hibernate:
+      type.descriptor.sql.BasicBinder: TRACE
+    jdbc:
+      sqlonly: OFF
+      sqltiming: OFF
+      audit: ERROR
+      resultset: ERROR
+      connection: ERROR
+      resultsettable: INFO

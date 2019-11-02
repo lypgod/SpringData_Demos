@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- Define persistence unit -->
+    <persistence-unit name="mysql-persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <!--配置 JPA 规范的服务提供商，当项目中只有一个JPA实现时，可以省略 -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.2.10:3306/spring_data_demo?useSSL=true"/>
+            <property name="javax.persistence.jdbc.user" value="lypgod"/>
+            <property name="javax.persistence.jdbc.password" value="123456"/>
+
+            <!--jpa的核心配置中兼容hibernate的配置-->
+            <!--是否显示SQL-->
+            <property name="hibernate.show_sql" value="true"/>
+            <!--是否格式化SQL-->
+            <property name="hibernate.format_sql" value="true"/>
+            <!--是否自动建表
+                update 数据库如果存在表就使用，如果不存在就创建
+                create 每次请求都会自动建表
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
